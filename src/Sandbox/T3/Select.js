@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 
-const T3 = () => {
+const Select = () => {
 
-    const [text, setText] = useState('');
-    const [checked, setChecked] = useState(true);
     const [value, setValue] = useState('');
 
     function handleChange(event) {
@@ -12,12 +10,6 @@ const T3 = () => {
 
     return (
         <div>
-            <input
-                type="text"
-                value={text}
-                onChange={event=> setText(event.target.value)}
-            />
-            <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
             <select value={value} onChange={handleChange}>
 			<option>text1</option>
 			<option>text2</option>
@@ -28,4 +20,4 @@ const T3 = () => {
     );
 };
 
-export default T3;
+export default Select;
