@@ -1,33 +1,31 @@
 import React from "react";
-import Select from "../components/inputs/Select/Select";
-import Text from "../components/inputs/Text/Text";
-import Checkbox from "../components/inputs/Checkbox/Checkbox";
+import Select from "../components/Inputs/Select/Select";
+import Text from "../components/Inputs/Text/Text";
+import Checkbox from "../components/Inputs/Checkbox/Checkbox";
 
-<Form config={
-    [
-        {
-            type: 'select',
-        },
-        {
-            type: 'text',
-        },
-        {
-            type: 'checkbox',
-        },
-    ]
-}/>
 
-const Form = (config) => {
+const FormItem = (props) => {
 
-    const renderItems = config.map((item) => {
-        if(item.type === 'select') return <Select/>
-        if(item.type === 'text') return <Text/>
-        if(item.type === 'checkbox') return <Checkbox/>
-    })
+    const Wrapper = (props) => {
+        return <div>
+            {props.label ? <p>{props.label} :</p> : undefined}
+            {props.children}
+        </div>
+    }
+
+
+    if(props.type === 'select') return <Wrapper {...props}><Select/></Wrapper>
+    if(props.type === 'text') return <Wrapper {...props}><Text defaultValue ={props.defaultValue} placeholder={props.placeholder}/></Wrapper>
+    if(props.type === 'checkbox') return <Wrapper {...props}><Checkbox/></Wrapper>
+}
+
+const renderItems = (config) => { config.map((item) => <FormItem {...item}/>) }
+
+const Form = (props) => {
 
     return ( 
         <form>
-            { [...renderItems(config)] }
+            { [...renderItems(props.config)] }
         </form>
     );
 }

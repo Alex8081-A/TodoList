@@ -1,14 +1,10 @@
-import './App.css';
-import AddTodo from "./components/addTodo/AddTodo";
-import TodoList from "./components/todoList/TodoList";
+import Form from './Sandbox/Form';
 
 
 function App() {
     return (
-        <div className="app">
-            <div className="header">Todo List</div>
-            <AddTodo />
-            <TodoList/>
+        <div>
+            <Form />
         </div>
     );
 }

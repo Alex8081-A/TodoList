@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-const Text = () => {
+const Text = (props) => {
 
-    const [text, setText] = useState('');
+    const [text, setText] = useState(props.defaultValue);
 
     return (
         <div>

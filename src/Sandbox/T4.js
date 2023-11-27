@@ -1,12 +1,28 @@
 import React from "react";
 import Form from "./Form";
 
-function App() {
+function T4() {
     return (
         <div>
-            <Form/>
+            <Form config={
+                [
+                    {
+                        type: 'select',
+                        label: 'test',
+                    },
+                    {
+                        type: 'text',
+                        label: 'test',
+                        defaultValue: 'something',
+                        placeholder: 'Что-то',
+                    },
+                    {
+                        type: 'checkbox',
+                    },
+                
+            ]}/>
         </div>
     );
 }
 
-export default App;
+export default T4;
