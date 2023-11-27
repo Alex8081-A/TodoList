@@ -1,6 +1,6 @@
-import Select from "./Select";
-import Text from "./Text";
-import Checkbox from "./Checkbox";
+import Select from "../components/inputs/Select/Select";
+import Text from "../components/inputs/Text/Text";
+import Checkbox from "../components/inputs/Checkbox/Checkbox";
 
 
 
