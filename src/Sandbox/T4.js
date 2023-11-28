@@ -9,15 +9,19 @@ function T4() {
                     {
                         type: 'select',
                         label: 'test',
+                        defaultValue: 'text3',
                     },
                     {
                         type: 'text',
                         label: 'test',
                         defaultValue: 'something',
-                        placeholder: 'Что-то',
+                        placeholder: 'somethinggg',
+                        required: 'required',
                     },
                     {
                         type: 'checkbox',
+                        label: 'test',
+                        defaultValue: false,
                     },
                 
             ]}/>

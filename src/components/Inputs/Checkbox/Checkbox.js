@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-const Checkbox = () => {
+const Checkbox = (props) => {
 
-    const [checked, setChecked] = useState(true);
+    const [checked, setChecked] = useState(props.defaultValue);
 
     return (
         <div>

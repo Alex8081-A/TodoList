@@ -7,6 +7,8 @@ const Text = (props) => {
     return (
         <div>
             <input
+                required={props.required}
+                placeholder={props.placeholder}
                 type="text"
                 value={text}
                 onChange={event=> setText(event.target.value)}

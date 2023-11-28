@@ -1,10 +1,10 @@
-import Form from './Sandbox/Form';
-
+import T4 from './Sandbox/T4';
+import React from 'react';
 
 function App() {
     return (
         <div>
-            <Form />
+            <T4 />
         </div>
     );
 }

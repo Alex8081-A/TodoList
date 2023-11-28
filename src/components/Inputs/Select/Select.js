@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-const Select = () => {
+const Select = (props) => {
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(props.defaultValue);
 
     function handleChange(event) {
 		setValue(event.target.value);
