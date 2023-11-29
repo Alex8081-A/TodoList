@@ -10,6 +10,7 @@ function T4() {
                         type: 'select',
                         label: 'test',
                         defaultValue: 'text3',
+                        name: 'Select',
                     },
                     {
                         type: 'text',
@@ -17,11 +18,13 @@ function T4() {
                         defaultValue: 'something',
                         placeholder: 'somethinggg',
                         required: 'required',
+                        name: 'Text',
                     },
                     {
                         type: 'checkbox',
                         label: 'test',
                         defaultValue: false,
+                        name: 'Checkbox',
                     },
                 
             ]}/>

@@ -10,6 +10,7 @@ const Text = (props) => {
                 required={props.required}
                 placeholder={props.placeholder}
                 type="text"
+                name={props.name}
                 value={text}
                 onChange={event=> setText(event.target.value)}
             />
