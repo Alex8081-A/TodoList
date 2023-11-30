@@ -1,61 +1,56 @@
-import React from "react";
+import React, { useRef } from "react";
 import Select from "../components/Inputs/Select/Select";
 import Text from "../components/Inputs/Text/Text";
 import Checkbox from "../components/Inputs/Checkbox/Checkbox";
-/*import Button from "../components/Inputs/Button/Button";*/
 
 const FormItem = (props) => {
 
-    const Wrapper = (props) => {
-        return <div>
-            {props.label ? <p>{props.label}</p> : undefined}
-            {props.children}
-        </div>
-    }
 
-    if(props.type === 'select') return <Wrapper {...props}><Select defaultValue ={props.defaultValue} name={props.name}/></Wrapper>
-    if(props.type === 'text') return <Wrapper {...props}><Text defaultValue ={props.defaultValue} placeholder={props.placeholder} required={props.required} name={props.name}/></Wrapper>
-    if(props.type === 'checkbox') return <Wrapper {...props}><Checkbox defaultValue ={props.defaultValue} name={props.name}/></Wrapper>
-    return undefined
+    let formInput; 
+    if(props.type === 'select') formInput = <Select defaultValue ={props.defaultValue} name={props.name} placeholder={props.placeholder}/>
+    if(props.type === 'text') formInput = <Text defaultValue ={props.defaultValue} placeholder={props.placeholder} required={props.required} name={props.name}/>
+    if(props.type === 'checkbox') formInput = <Checkbox defaultValue ={props.defaultValue} name={props.name}/>
+
+    return (
+        <div style={{border: '1px solid black', padding: '20px'}}>
+            {props.label ? <label>{props.label}</label> : undefined}
+            {formInput}
+        </div>
+    )
 }
 
 const renderItems = (config) => config.map((item) => <FormItem {...item}/>)
 
 const Form = (props) => {
-    
-    
 
-    /*function showForm() {
-        const form = document.getElementById('form');
-        console.log(form);
-    }*/
-    
+    const ref = useRef(null);
+
     function serializeForm(formNode) {
         const { elements } = formNode
-
-  Array.from(elements)
-    .forEach((element) => {
-      const { name } = element
-      console.log({ name })
-    })
-          }
       
-        
+        const data = new FormData()
+      
+        Array.from(elements)
+          .filter((item) => !!item.name)
+          .forEach((element) => {
+            const { name, type } = element
+            const value = type === 'checkbox' ? element.checked : element.value
+      
+            data.append(name, value)
+          })
+          console.log(Object.fromEntries(data.entries()))
+        return data
+      }
+    
     function handleForm(event) {
             event.preventDefault()
-            serializeForm(applicantForm)
+            serializeForm(ref.current)
         }
 
-        const applicantForm = document.getElementById('form')
-      
-
     return ( 
-        <form id="form">
+        <form id="form" ref={ref} onSubmit={handleForm}>
             { [...renderItems(props.config)] }
-            <input 
-                type='button'
-                value='Отправить'
-                onClick={handleForm}/>
+            <button type="submit">Отправить</button>
         </form>
     );
 }

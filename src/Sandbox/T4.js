@@ -9,22 +9,22 @@ function T4() {
                     {
                         type: 'select',
                         label: 'test',
-                        defaultValue: 'text3',
-                        name: 'Select',
+                        /*defaultValue: 'text3',*/
+                        name: 'select',
                     },
                     {
                         type: 'text',
                         label: 'test',
                         defaultValue: 'something',
-                        placeholder: 'somethinggg',
+                        placeholder : 'somethinggg',
                         required: 'required',
-                        name: 'Text',
+                        name: 'text',
                     },
                     {
                         type: 'checkbox',
                         label: 'test',
                         defaultValue: false,
-                        name: 'Checkbox',
+                        name: 'checkbox',
                     },
                 
             ]}/>
