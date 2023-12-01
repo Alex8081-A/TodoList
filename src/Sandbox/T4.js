@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Form";
+import Form from "../components/Form/Form";
 
 function T4() {
     return (
@@ -9,8 +9,26 @@ function T4() {
                     {
                         type: 'select',
                         label: 'test',
-                        /*defaultValue: 'text3',*/
                         name: 'select',
+                        placeholder: 'Выберите вариант',
+                        options: [
+                            {
+                                label: 'text1',
+                                value: '1',
+                            },
+                            {
+                                label: 'text2',
+                                value: '2',
+                            },
+                            {
+                                label: 'text3',
+                                value: '3',
+                            },
+                            {
+                                label: 'text4',
+                                value: '4',
+                            },
+                        ]
                     },
                     {
                         type: 'text',

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const Select = (props) => {
 
-    const [value, setValue] = useState(props.defaultValue);
+    const [value, setValue] = useState(props.placeholder);
 
     function handleChange(event) {
 		setValue(event.target.value);
@@ -10,8 +10,8 @@ const Select = (props) => {
 
     return (
         <div>
-            <select value={value} onChange={handleChange} name={props.name} placeholder={props.placeholder}>
-            <option value="" disabled selected>Select your option</option>    
+            <select value={value} onChange={handleChange} name={props.name} placeholder={props.placeholder} options={props.options}>
+            <option selected disabled hidden>{props.placeholder}</option>
 			<option>text1</option>
 			<option>text2</option>
 			<option>text3</option>
