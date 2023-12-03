@@ -8,7 +8,6 @@ const Checkbox = (props) => {
         <div>
             <input type="checkbox" 
             checked={checked}
-            /*value={checked}*/
             name={props.name}
             onChange={() => setChecked(!checked)} />
         </div>

@@ -7,7 +7,7 @@ const FormItem = (props) => {
 
 
     let formInput; 
-    if(props.type === 'select') formInput = <Select defaultValue ={props.defaultValue} name={props.name} placeholder={props.placeholder}/>
+    if(props.type === 'select') formInput = <Select defaultValue ={props.defaultValue} name={props.name} placeholder={props.placeholder} label={props.label} options={props.options}/>
     if(props.type === 'text') formInput = <Text defaultValue ={props.defaultValue} placeholder={props.placeholder} required={props.required} name={props.name}/>
     if(props.type === 'checkbox') formInput = <Checkbox defaultValue ={props.defaultValue} name={props.name}/>
 

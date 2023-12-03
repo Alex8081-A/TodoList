@@ -1,11 +1,26 @@
 import React, { useRef } from "react";
 import FormItem from "../FormItem/FormItem";
 
-const renderItems = (config) => config.map((item) => <FormItem {...item}/>)
+const renderItems = (config) => config.map((item, index) => <FormItem {...item} key={index}/>)
 
 const Form = (props) => {
 
     const ref = useRef(null);
+
+  /*function serializeForm(formNode) {
+    const { elements } = formNode
+
+    const data = Array.from(elements)
+    .map((element) => {
+      const { name, type } = element
+      const value = type === 'checkbox' ? element.checked : element.value
+
+      return { name, value }
+    })
+    .filter((item) => !!item.name)
+
+    console.log(data)
+    }*/
 
     function serializeForm(formNode) {
         const { elements } = formNode
