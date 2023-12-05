@@ -1,7 +1,8 @@
 import T4 from './Sandbox/T4';
 import React from 'react';
+//import Test from './Sandbox/Test';
 
-function App() {
+const App = () => {
     return (
         <div>
             <T4 />

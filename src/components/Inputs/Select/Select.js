@@ -4,19 +4,28 @@ const Select = (props) => {
 
     const [value, setValue] = useState(props.placeholder);
 
-    function handleChange(event) {
+    const handleChange = (event) => {
 		setValue(event.target.value);
 	}
 
+    const Option = (props) => {
+
+        return <option value={props.value}>{props.label}</option>
+    }
+
+    const arr = props.options
+    const arr1 =  arr.map((elem, index) => {
+        return (
+            <Option label={elem.label} value={elem.value} key={index}/>
+        ) 
+    })
+
     return (
         <div>
-            <select value={value} onChange={handleChange} name={props.name} placeholder={props.placeholder} options={props.options} label={props.label}>
+            <select value={value} onChange={handleChange} name={props.name} placeholder={props.placeholder}>
             <option disabled hidden>{props.placeholder}</option>
-			<option>{props.options[0].label}</option>
-			<option>{props.options[1].label}</option>
-			<option>{props.options[2].label}</option>
-			<option>{props.options[3].label}</option>
-		</select>
+            {arr1}
+		    </select>
         </div>
     );
 };

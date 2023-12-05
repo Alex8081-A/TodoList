@@ -7,22 +7,22 @@ const Form = (props) => {
 
     const ref = useRef(null);
 
-  /*function serializeForm(formNode) {
-    const { elements } = formNode
+    const serializeForm = (formNode) => {
 
+    const { elements } = formNode
     const data = Array.from(elements)
-    .map((element) => {
+      .map((element) => {
       const { name, type } = element
       const value = type === 'checkbox' ? element.checked : element.value
 
       return { name, value }
-    })
-    .filter((item) => !!item.name)
+      })
+      .filter((item) => !!item.name)
 
-    console.log(data)
-    }*/
+    console.log(data.reduce((acc, n) => (acc[n.name] = n.value, acc), {}))
+    }
 
-    function serializeForm(formNode) {
+    /*const serializeForm = (formNode) => {
         const { elements } = formNode
     
         const data = new FormData()
@@ -39,9 +39,9 @@ const Form = (props) => {
           console.log(Object.fromEntries(data.entries()))
           
         return data
-      }
+      }*/
     
-    function handleForm(event) {
+    const handleForm = (event) => {
             event.preventDefault()
             serializeForm(ref.current)
         }
