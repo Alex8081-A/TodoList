@@ -1,16 +1,13 @@
-import './App.css';
-import AddTodo from "./components/addTodo/AddTodo";
-import TodoList from "./components/todoList/TodoList";
+import T4 from "./Sandbox/T4";
+import React from "react";
+//import Test from './Sandbox/Test';
 
-
-function App() {
-    return (
-        <div className="app">
-            <div className="header">Todo List</div>
-            <AddTodo />
-            <TodoList/>
-        </div>
-    );
-}
+const App = () => {
+  return (
+    <div>
+      <T4 />
+    </div>
+  );
+};
 
 export default App;
