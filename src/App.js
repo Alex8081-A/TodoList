@@ -1,11 +1,10 @@
-import T4 from "./Sandbox/T4";
 import React from "react";
-//import Test from './Sandbox/Test';
+import Login from "./Pages/Login";
 
 const App = () => {
   return (
     <div>
-      <T4 />
+      <Login />
     </div>
   );
 };
