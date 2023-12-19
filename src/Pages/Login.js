@@ -1,19 +1,33 @@
 import React from "react";
 import Form from "../components/Form/Form";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-  let promise = new Promise(function (resolve, reject) {
-    if (Math.random() > 0.5) {
-      setTimeout(() => resolve("Успех"), 2000);
-    } else {
-      setTimeout(() => reject("Ошибка"), 2000);
+  let navigate = useNavigate();
+  const goHome = () => {
+    navigate("Home");
+  };
+  async function handleAuth(data) {
+    let promise = new Promise((resolve, reject) => {
+      if (data.password === "admin" && data.login === "admin") {
+        setTimeout(() => resolve({ token: "secret-string" }), 2000);
+      } else {
+        setTimeout(() => reject("Ошибка"), 2000);
+      }
+    });
+    try {
+      let result = await promise;
+      console.log(result);
+      /* if ((data.checkbox = true)) {
+        localStorage.setItem("name", "value");
+      }*/
+      // console.log(data.checkbox);
+      // localStorage.setItem();
+      goHome();
+    } catch (error) {
+      console.log(error);
     }
-  });
-
-  console.log(promise);
-
-  const handleAuth = () => {};
-
+    /*console.log(promise);*/
+  }
   return (
     <div>
       <h1>Авторизация</h1>
@@ -22,21 +36,21 @@ const Login = () => {
         config={[
           {
             type: "text",
-            label: "login",
+            label: "Login",
             placeholder: "Enter login",
             required: "required",
             name: "login",
           },
           {
             type: "password",
-            label: "password",
+            label: "Password",
             placeholder: "Enter password",
             required: "required",
             name: "password",
           },
           {
             type: "checkbox",
-            label: "test",
+            label: "Remember me",
             defaultValue: false,
             name: "checkbox",
           },
