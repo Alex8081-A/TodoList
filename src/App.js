@@ -3,13 +3,10 @@ import Login from "./Pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Wrapper from "./Sandbox/Wrapper";
+import { useAuth } from "./utils/userAuth";
+
 const App = () => {
-  const checkToken = () => {
-    const token = localStorage.getItem("token");
-    if (token === "secret-string") {
-      return true;
-    } else return false;
-  };
+  const auth = useAuth();
   return (
     <div>
       <Routes>
@@ -17,7 +14,7 @@ const App = () => {
         <Route
           path="Home"
           element={
-            <Wrapper isAuth={checkToken()}>
+            <Wrapper isAuth={auth.isAuth}>
               <Home />
             </Wrapper>
           }
@@ -25,8 +22,8 @@ const App = () => {
         <Route
           path="About"
           element={
-            <Wrapper isAuth={checkToken()}>
-              <div>adas</div>
+            <Wrapper isAuth={auth.isAuth}>
+              <div>About</div>
             </Wrapper>
           }
         />
