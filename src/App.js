@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Wrapper from "./Sandbox/Wrapper";
 import { useAuth } from "./utils/userAuth";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const auth = useAuth();

@@ -40,7 +40,7 @@ const FormItem = (props) => {
   return (
     <div
       style={{
-        border: "1px solid black",
+        textAlign: "center",
         padding: "20px",
       }}
     >

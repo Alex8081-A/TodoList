@@ -4,14 +4,6 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 export const useAuth = () => {
   const { isAuth } = useSelector((state) => state.user);
-  /*if (isAuth) {
-    return {
-      isAuth,
-    };
-  } else {
-    return { isAuth: checkToken() };
-  }*/
-
   const dispatch = useDispatch();
   if (checkToken()) {
     dispatch(

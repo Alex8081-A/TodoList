@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import password from "./password.css";
 const Password = (props) => {
   const [password, setPassword] = useState(props.defaultValue);
 
@@ -12,6 +12,7 @@ const Password = (props) => {
         name={props.name}
         value={password}
         onChange={(event) => setPassword(event.target.value)}
+        className="password"
       />
     </div>
   );
