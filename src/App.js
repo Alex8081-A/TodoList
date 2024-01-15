@@ -1,13 +1,16 @@
 import React from "react";
 import Login from "./Pages/Login";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Wrapper from "./Sandbox/Wrapper";
 import { useAuth } from "./utils/userAuth";
-import { useSelector } from "react-redux";
+import Spinner from "./Spinner";
 
 const App = () => {
   const auth = useAuth();
+  /*if (auth.isAuth === undefined) {
+    return <Spinner />;
+  }*/
   return (
     <div>
       <Routes>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import text from "./text.css";
+import text from "./text.scss";
 const Text = (props) => {
   const [text, setText] = useState(props.defaultValue);
 

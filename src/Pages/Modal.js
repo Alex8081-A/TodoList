@@ -1,5 +1,5 @@
 import React from "react";
-import ModalStyle from "./ModalStyle.css";
+import ModalStyle from "./ModalStyle.scss";
 
 export const Modal = ({ isOpen, onClose, children }) => {
   const onWrapperClick = (event) => {

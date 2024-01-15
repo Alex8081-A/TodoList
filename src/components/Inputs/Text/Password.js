@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import password from "./password.css";
+import password from "./password.scss";
 const Password = (props) => {
   const [password, setPassword] = useState(props.defaultValue);
 

@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import Form from "../components/Form/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
 import { begin, errorr, success } from "../store/loginSlice";
-import login from "./login.css";
-import { useLocation } from "react-router-dom";
+import login from "./login.scss";
+import Spinner from "../Spinner";
+
 const Login = () => {
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
-  const location = useLocation();
-  console.log(location);
+  console.log(isLogin);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  /*const goToCurrentPage = () => {
-    navigate(location.pathname);
+  /*const goTo = () => {
+    navigate(document.location.pathname);
   };*/
   const goHome = () => {
     navigate("Home");
   };
-  if (isLogin) {
+  /*if (isLogin) {
     goHome();
-  }
+  }*/
   const [auth, setAuth] = useState(false);
 
   async function handleAuth(data) {
@@ -77,7 +77,7 @@ const Login = () => {
         <div>
           <h1 className="h1">Login</h1>
           {auth ? <p>Успешная авторизация</p> : undefined}
-          {isLoading ? <p>Загрузка</p> : undefined}
+          {isLoading ? <Spinner /> : undefined}
           <Form
             onSubmit={handleAuth}
             config={[

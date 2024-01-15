@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { setUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
 const Home = () => {
+  const title = document.location.pathname;
+  console.log(title);
   let navigateHome = useNavigate();
   const goToLogin = () => {
     navigateHome("/");

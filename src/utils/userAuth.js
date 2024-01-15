@@ -11,6 +11,12 @@ export const useAuth = () => {
         isAuth: true,
       })
     );
-  }
+  } /*else {
+    dispatch(
+      setUser({
+        isAuth: false,
+      })
+    );*/
+  // };
   return { isAuth };
 };

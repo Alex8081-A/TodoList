@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import checkbox from "./checkbox.css";
+import checkbox from "./checkbox.scss";
 const Checkbox = (props) => {
   const [checked, setChecked] = useState(props.defaultValue);
 

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import FormItem from "../FormItem/FormItem";
 import { serializeForm } from "../../utils/utils";
-import form from "./form.css";
+import form from "./form.scss";
 const renderItems = (config) =>
   config.map((item, index) => <FormItem {...item} key={index} />);
 
