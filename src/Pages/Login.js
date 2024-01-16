@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import Form from "../components/Form/Form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
 import { begin, errorr, success } from "../store/loginSlice";
 import login from "./login.scss";
 import Spinner from "../Spinner";
-
 const Login = () => {
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
+  const currenUrl = useSelector((state) => state.url.url);
+  console.log(currenUrl);
   console.log(isLogin);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  /*const goTo = () => {
-    navigate(document.location.pathname);
+
+  /*const goToCurrenPage = () => {
+    navigate(currenUrl);
   };*/
   const goHome = () => {
     navigate("Home");
   };
-  /*if (isLogin) {
-    goHome();
-  }*/
   const [auth, setAuth] = useState(false);
 
   async function handleAuth(data) {

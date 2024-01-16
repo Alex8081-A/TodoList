@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "./Pages/Login";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Wrapper from "./Sandbox/Wrapper";
 import { useAuth } from "./utils/userAuth";
 import Spinner from "./Spinner";
-
+import { useDispatch } from "react-redux";
+import { setUrl } from "./store/urlSlice";
+import Modall from "./Pages/Modall";
 const App = () => {
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  console.log(location.pathname);
   const auth = useAuth();
-  /*if (auth.isAuth === undefined) {
+  dispatch(
+    setUrl({
+      url: location.pathname,
+    })
+  );
+  if (auth.isAuth === undefined) {
     return <Spinner />;
-  }*/
+  }
   return (
     <div>
+      <Modall open={open} onClose={() => setOpen(false)}>
+        Portal
+      </Modall>
+      <button onClick={() => setOpen(true)}>Открыть модалку</button>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route
