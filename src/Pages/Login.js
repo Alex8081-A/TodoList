@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "../components/Form/Form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
 import { begin, errorr, success } from "../store/loginSlice";
-import login from "./login.scss";
+import login from "./login.module.scss";
 import Spinner from "../Spinner";
 const Login = () => {
+  useEffect(() => {
+    if (isLogin) {
+      navigate(-1);
+    }
+  }, []);
+
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
-  const currenUrl = useSelector((state) => state.url.url);
-  console.log(currenUrl);
-  console.log(isLogin);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-
-  /*const goToCurrenPage = () => {
-    navigate(currenUrl);
-  };*/
-  const goHome = () => {
-    navigate("Home");
-  };
   const [auth, setAuth] = useState(false);
 
   async function handleAuth(data) {
@@ -44,16 +40,17 @@ const Login = () => {
               data: response.data,
             })
           );
-          if (data.checkbox === true) {
-            localStorage.setItem("token", "secret-string");
-          }
-          setAuth(true);
           dispatch(
             setUser({
               isAuth: true,
             })
           );
-          goHome();
+          if (data.checkbox === true) {
+            localStorage.setItem("token", "secret-string");
+          }
+          setAuth(true);
+
+          navigate("Home");
         })
         .catch((error) => {
           console.log("error:", error);
@@ -69,12 +66,12 @@ const Login = () => {
     request();
   }
   if (isLogin) {
-    goHome();
+    // goToCurrenPage();
   } else {
     return (
       <>
         <div>
-          <h1 className="h1">Login</h1>
+          <h1 className={login.h1}>Login</h1>
           {auth ? <p>Успешная авторизация</p> : undefined}
           {isLoading ? <Spinner /> : undefined}
           <Form

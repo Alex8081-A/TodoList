@@ -5,20 +5,12 @@ import Home from "./Pages/Home";
 import Wrapper from "./Sandbox/Wrapper";
 import { useAuth } from "./utils/userAuth";
 import Spinner from "./Spinner";
-import { useDispatch } from "react-redux";
-import { setUrl } from "./store/urlSlice";
 import Modall from "./Pages/Modall";
 const App = () => {
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
   const location = useLocation();
   console.log(location.pathname);
   const auth = useAuth();
-  dispatch(
-    setUrl({
-      url: location.pathname,
-    })
-  );
   if (auth.isAuth === undefined) {
     return <Spinner />;
   }

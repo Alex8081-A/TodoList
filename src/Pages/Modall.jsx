@@ -13,14 +13,14 @@ const Modall = (props) => {
             modalRootElement.removeChild(element)
         }
         }
-    })
+    }, [])
 
     if (open) {
         return createPortal(
             <div className={styleModall.modal_background} onClick={onClose}>
                 <div className={styleModall.modal_cart}>{props.children}</div>
             </div>,
-            element
+            modalRootElement
         );
     }
     return null;
