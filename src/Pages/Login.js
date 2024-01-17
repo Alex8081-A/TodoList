@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import Form from "../components/Form/Form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../store/userSlice";
-import axios from "axios";
-import { begin, errorr, success } from "../store/loginSlice";
 import login from "./login.module.scss";
 import Spinner from "../Spinner";
 const Login = () => {
@@ -16,54 +13,28 @@ const Login = () => {
 
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
-  const dispatch = useDispatch();
   let navigate = useNavigate();
   const [auth, setAuth] = useState(false);
 
   async function handleAuth(data) {
-    async function request() {
-      dispatch(
-        begin({
-          loading: true,
-          error: null,
-          data: null,
-        })
-      );
-      axios
-        .post("https://json-placeholder.mock.beeceptor.com/login", { data })
-        .then((response) => {
-          console.log("response:", response);
-          dispatch(
-            success({
-              loading: false,
-              error: null,
-              data: response.data,
-            })
-          );
-          dispatch(
-            setUser({
-              isAuth: true,
-            })
-          );
-          if (data.checkbox === true) {
-            localStorage.setItem("token", "secret-string");
-          }
-          setAuth(true);
-
-          navigate("Home");
-        })
-        .catch((error) => {
-          console.log("error:", error);
-          dispatch(
-            errorr({
-              loading: false,
-              error: true,
-              data: null,
-            })
-          );
-        });
+    let promise = new Promise((resolve, reject) => {
+      if (data.password === "admin" && data.login === "admin") {
+        setTimeout(() => resolve({ token: "secret-string" }), 2000);
+      } else {
+        setTimeout(() => reject("Ошибка"), 2000);
+      }
+      if (data.checkbox === true) {
+        localStorage.setItem("key", JSON.stringify({ token: "secret-string" }));
+      }
+      const token = localStorage.setItem("key");
+    });
+    try {
+      let result = await promise;
+      console.log(result);
+      goHome();
+    } catch (error) {
+      console.log(error);
     }
-    request();
   }
   if (isLogin) {
     // goToCurrenPage();
