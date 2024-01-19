@@ -1,4 +1,4 @@
-const Wrapper = (props) => {
+const PrivateRoute = (props) => {
   if (props.isAuth === true) {
     return <div>{props.children}</div>;
   } else {
@@ -6,4 +6,4 @@ const Wrapper = (props) => {
   }
 };
 
-export default Wrapper;
+export default PrivateRoute;

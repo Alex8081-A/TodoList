@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import FormItem from "../FormItem/FormItem";
 import { serializeForm } from "../../utils/utils";
-import form from "./form.scss";
+import form from "./form.module.scss";
 const renderItems = (config) =>
   config.map((item, index) => <FormItem {...item} key={index} />);
 
@@ -17,7 +17,7 @@ const Form = (props) => {
   return (
     <form id="form" ref={ref} onSubmit={handleForm}>
       {[...renderItems(props.config)]}
-      <button type="submit" className="sub_btn">
+      <button type="submit" className={form.sub_btn}>
         Отправить
       </button>
     </form>

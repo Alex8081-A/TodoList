@@ -17,7 +17,7 @@ const Login = () => {
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [auth, setAuth] = useState(false);
 
   async function handleAuth(data) {
@@ -47,6 +47,9 @@ const Login = () => {
           );
           if (data.checkbox === true) {
             localStorage.setItem("token", "secret-string");
+          }
+          if (data.checkbox === false) {
+            localStorage.setItem("1", "1");
           }
           setAuth(true);
 

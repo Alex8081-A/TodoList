@@ -2,7 +2,7 @@ import React from "react";
 import Select from "../Inputs/Select/Select";
 import Text from "../Inputs/Text/Text";
 import Checkbox from "../Inputs/Checkbox/Checkbox";
-import Password from "../Inputs/Text/Password";
+import Password from "../Inputs/Password/Password";
 
 const FormItem = (props) => {
   let formInput;

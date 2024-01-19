@@ -22,5 +22,11 @@ export const serializeForm = (formNode) => {
 
 export const checkToken = () => {
   const token = localStorage.getItem("token");
-  return token === "secret-string";
+  const token1 = localStorage.getItem("1");
+
+  if (token) {
+    return token;
+  } else {
+    return token1;
+  }
 };

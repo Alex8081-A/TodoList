@@ -1,23 +1,21 @@
 import React from "react";
 import { Modal } from "./Modal";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
 const Home = () => {
   let navigateHome = useNavigate();
-  const goToLogin = () => {
-    navigateHome("/");
-  };
   const dispatch = useDispatch();
   const deleteToken = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("1");
     dispatch(
       setUser({
         isAuth: false,
       })
     );
-    goToLogin();
+    navigateHome("/");
   };
 
   const [modalIsOpen, setModalOpen] = useState(false);
