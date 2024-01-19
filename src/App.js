@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Login from "./Pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Wrapper from "./Sandbox/Wrapper";
+import PrivateRoute from "./Sandbox/PrivateRoute";
 import { useAuth } from "./utils/userAuth";
 import Spinner from "./Spinner";
 
@@ -18,17 +18,17 @@ const App = () => {
         <Route
           path="Home"
           element={
-            <Wrapper isAuth={auth.isAuth}>
+            <PrivateRoute isAuth={auth.isAuth}>
               <Home />
-            </Wrapper>
+            </PrivateRoute>
           }
         />
         <Route
           path="About"
           element={
-            <Wrapper isAuth={auth.isAuth}>
+            <PrivateRoute isAuth={auth.isAuth}>
               <div>About</div>
-            </Wrapper>
+            </PrivateRoute>
           }
         />
       </Routes>
