@@ -16,31 +16,26 @@ const Login = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
 
-  const handleAuth = (data) => {
-    async () => {
-      let promise = new Promise((resolve, reject) => {
-        if (data.password === "admin" && data.login === "admin") {
-          setTimeout(() => resolve({ token: "secret-string" }), 2000);
-        } else {
-          setTimeout(() => reject("Ошибка"), 2000);
-        }
-        if (data.checkbox === true) {
-          localStorage.setItem(
-            "key",
-            JSON.stringify({ token: "secret-string" })
-          );
-        }
-        const token = localStorage.setItem("key");
-      });
-      try {
-        let result = await promise;
-        console.log(result);
-        goHome();
-        setIsAuth(true);
-      } catch (error) {
-        console.log(error);
+  const handleAuth = async (data) => {
+    let promise = new Promise((resolve, reject) => {
+      if (data.password === "admin" && data.login === "admin") {
+        setTimeout(() => resolve({ token: "secret-string" }), 2000);
+      } else {
+        setTimeout(() => reject("Ошибка"), 2000);
       }
-    };
+      if (data.checkbox === true) {
+        localStorage.setItem("key", JSON.stringify({ token: "secret-string" }));
+      }
+      const token = localStorage.setItem("key");
+    });
+    try {
+      let result = await promise;
+      console.log(result);
+      goHome();
+      setIsAuth(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (isLogin) {
