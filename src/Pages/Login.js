@@ -18,7 +18,7 @@ const Login = () => {
   const isLoading = useSelector((state) => state.login.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   async function handleAuth(data) {
     async function request() {
@@ -51,7 +51,7 @@ const Login = () => {
           if (data.checkbox === false) {
             localStorage.setItem("1", "1");
           }
-          setAuth(true);
+          setIsAuth(true);
 
           navigate("Home");
         })
@@ -75,21 +75,19 @@ const Login = () => {
       <>
         <div>
           <h1 className={login.h1}>Login</h1>
-          {auth ? <p>Успешная авторизация</p> : undefined}
+          {isAuth ? <p>Успешная авторизация</p> : undefined}
           {isLoading ? <Spinner /> : undefined}
           <Form
             onSubmit={handleAuth}
             config={[
               {
                 type: "text",
-                // label: "Login",
                 placeholder: "Enter login",
                 required: "required",
                 name: "login",
               },
               {
                 type: "password",
-                // label: "Password",
                 placeholder: "Enter password",
                 required: "required",
                 name: "password",

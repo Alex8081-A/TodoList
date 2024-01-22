@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
 const Home = () => {
-  let navigateHome = useNavigate();
+  const navigateHome = useNavigate();
   const dispatch = useDispatch();
   const deleteToken = () => {
     localStorage.removeItem("token");

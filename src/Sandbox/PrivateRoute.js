@@ -1,9 +1,6 @@
 const PrivateRoute = (props) => {
-  if (props.isAuth === true) {
-    return <div>{props.children}</div>;
-  } else {
-    return <div>Нет доступа</div>;
-  }
+  if (props.isAuth) return <div>{props.children}</div>;
+  return <div>Нет доступа</div>;
 };
 
 export default PrivateRoute;
