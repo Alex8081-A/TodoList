@@ -7,21 +7,21 @@ import axios from "axios";
 import { begin, errorr, success } from "../store/loginSlice";
 import login from "./login.module.scss";
 import Spinner from "../Spinner";
+
 const Login = () => {
   useEffect(() => {
-    if (isLogin) {
+    if (isLogin || localStorage.getItem("token") === "secret-string") {
       navigate(-1);
     }
   }, []);
-
+  const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.user.isAuth);
   const isLoading = useSelector((state) => state.login.loading);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
 
-  async function handleAuth(data) {
-    async function request() {
+  const handleAuth = async (data) => {
+    const request = async () => {
       dispatch(
         begin({
           loading: true,
@@ -33,6 +33,7 @@ const Login = () => {
         .post("https://json-placeholder.mock.beeceptor.com/login", { data })
         .then((response) => {
           console.log("response:", response);
+          console.log(response.data.token);
           dispatch(
             success({
               loading: false,
@@ -48,11 +49,7 @@ const Login = () => {
           if (data.checkbox === true) {
             localStorage.setItem("token", "secret-string");
           }
-          if (data.checkbox === false) {
-            localStorage.setItem("1", "1");
-          }
           setIsAuth(true);
-
           navigate("Home");
         })
         .catch((error) => {
@@ -65,9 +62,9 @@ const Login = () => {
             })
           );
         });
-    }
+    };
     request();
-  }
+  };
   if (isLogin) {
     // goToCurrenPage();
   } else {

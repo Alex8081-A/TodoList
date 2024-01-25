@@ -19,14 +19,3 @@ export const serializeForm = (formNode) => {
   console.log(test);
   return test;
 };
-
-export const checkToken = () => {
-  const token = localStorage.getItem("token");
-  const token1 = localStorage.getItem("1");
-
-  if (token) {
-    return token;
-  } else {
-    return token1;
-  }
-};

@@ -9,7 +9,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const deleteToken = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("1");
     dispatch(
       setUser({
         isAuth: false,
