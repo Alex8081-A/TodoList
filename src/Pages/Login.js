@@ -10,15 +10,18 @@ import Spinner from "../Spinner";
 
 const Login = () => {
   useEffect(() => {
-    if (isLogin || localStorage.getItem("token") === "secret-string") {
+    if (isLogin) {
       navigate(-1);
-    }
+    } /*else if (isLogin && currentUrl === "http://localhost:3000/") {
+      navigate("Home");
+    }*/
   }, []);
-  const dispatch = useDispatch();
-  const isLogin = useSelector((state) => state.user.isAuth);
-  const isLoading = useSelector((state) => state.login.loading);
   const navigate = useNavigate();
-  const [isAuth, setIsAuth] = useState(false);
+  // const currentUrl = window.location.href;
+  const isLogin = useSelector((state) => state.user.isAuth);
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.login.loading);
+  const [isAuthNotice, setIsAuthNotice] = useState(false);
 
   const handleAuth = async (data) => {
     const request = async () => {
@@ -49,7 +52,7 @@ const Login = () => {
           if (data.checkbox === true) {
             localStorage.setItem("token", "secret-string");
           }
-          setIsAuth(true);
+          setIsAuthNotice(true);
           navigate("Home");
         })
         .catch((error) => {
@@ -66,13 +69,12 @@ const Login = () => {
     request();
   };
   if (isLogin) {
-    // goToCurrenPage();
   } else {
     return (
       <>
         <div>
           <h1 className={login.h1}>Login</h1>
-          {isAuth ? <p>Успешная авторизация</p> : undefined}
+          {isAuthNotice ? <p>Успешная авторизация</p> : undefined}
           {isLoading ? <Spinner /> : undefined}
           <Form
             onSubmit={handleAuth}
