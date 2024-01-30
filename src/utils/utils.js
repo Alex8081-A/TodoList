@@ -20,7 +20,7 @@ export const serializeForm = (formNode) => {
   return test;
 };
 
-export const chekToken = () => {
+export const checkToken = () => {
   const token = localStorage.getItem("token");
   return token === "secret-string";
 };
