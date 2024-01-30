@@ -13,9 +13,9 @@ const Home = () => {
         isAuth: false,
       })
     );
-    navigateHome("/");
+        navigateHome("/");
   };
-
+ 
   return (
     <div>
       <h1>Home</h1>
