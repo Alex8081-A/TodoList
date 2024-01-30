@@ -29,7 +29,7 @@ const App = () => {
   }, []);
   const auth = useSelector((state) => state.user);
   if (auth.initialize === false) {
-    return <Spinner />;
+return <Spinner />;
   }
   return (
     <div>
