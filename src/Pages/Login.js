@@ -12,12 +12,9 @@ const Login = () => {
   useEffect(() => {
     if (isLogin) {
       navigate(-1);
-    } /*else if (isLogin && currentUrl === "http://localhost:3000/") {
-      navigate("Home");
-    }*/
+    }
   }, []);
   const navigate = useNavigate();
-  // const currentUrl = window.location.href;
   const isLogin = useSelector((state) => state.user.isAuth);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.login.loading);
