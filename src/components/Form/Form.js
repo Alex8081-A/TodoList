@@ -1,42 +1,25 @@
 import React, { useRef } from "react";
 import FormItem from "../FormItem/FormItem";
-
+import { serializeForm } from "../../utils/utils";
+import form from "./form.module.scss";
 const renderItems = (config) =>
   config.map((item, index) => <FormItem {...item} key={index} />);
 
 const Form = (props) => {
   const ref = useRef(null);
 
-  const serializeForm = (formNode) => {
-    const { elements } = formNode;
-    const data = Array.from(elements)
-      .map((element) => {
-        const { name, type } = element;
-        const value = type === "checkbox" ? element.checked : element.value;
-
-        return { name, value };
-      })
-      .filter((item) => !!item.name);
-
-    const test = data.reduce((accumulator, currentValue, index) => {
-      const result = {
-        [currentValue.name]: currentValue.value,
-        ...accumulator,
-      };
-      return result;
-    }, {});
-    console.log(test);
-  };
-
   const handleForm = (event) => {
     event.preventDefault();
-    serializeForm(ref.current);
+    const data = serializeForm(ref.current);
+    props.onSubmit(data);
   };
 
   return (
     <form id="form" ref={ref} onSubmit={handleForm}>
       {[...renderItems(props.config)]}
-      <button type="submit">Отправить</button>
+      <button type="submit" className={form.sub_btn}>
+        Отправить
+      </button>
     </form>
   );
 };
