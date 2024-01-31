@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import PrivateRoute from "./Sandbox/PrivateRoute";
 import Spinner from "./Spinner";
+import Modall from "./Pages/Modall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { chekToken } from "./utils/utils";
@@ -28,11 +29,16 @@ const App = () => {
     }
   }, []);
   const auth = useSelector((state) => state.user);
+  const [open, setOpen] = useState(false);
   if (auth.initialize === false) {
-return <Spinner />;
+    return <Spinner />;
   }
   return (
     <div>
+      <Modall open={open} onClose={() => setOpen(false)}>
+        Portal
+      </Modall>
+      <button onClick={() => setOpen(true)}>Открыть модалку</button>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route
