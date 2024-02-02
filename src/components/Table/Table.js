@@ -1,41 +1,13 @@
 import React from "react";
 import tableStyle from "./table.scss";
-const Table = () => {
-  const columns = [
-    {
-      dataKey: "name",
-      title: "Имя",
-    },
-    {
-      dataKey: "age",
-      title: "Возраст",
-    },
-  ];
-
-  const dataSource = [
-    {
-      id: 1,
-      name: "Petr",
-      age: "15",
-    },
-    {
-      id: 2,
-      name: "Ivan",
-      age: "18",
-    },
-    {
-      id: 3,
-      name: "Test",
-      age: "25",
-    },
-    {
-      id: 4,
-      name: "Pisya",
-      age: "3",
-    },
-  ];
+const Table = (props) => {
+  console.log(props.config[0]);
+  const columns = props.config[0].columns;
+  const dataSource = props.config[0].dataSource;
 
   const rows = dataSource.map((item) => {
+    const keys = Object.keys(item);
+    console.log(keys);
     return (
       <tr key={item.id}>
         <td className="td">{item.name}</td>
@@ -43,7 +15,6 @@ const Table = () => {
       </tr>
     );
   });
-
   const column = columns.map((item) => {
     return (
       <th className="th" key={item.dataKey}>

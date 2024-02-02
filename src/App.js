@@ -7,14 +7,14 @@ import Spinner from "./Spinner";
 import Modall from "./Pages/Modall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { chekToken } from "./utils/utils";
+import { checkToken } from "./utils/utils";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/userSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if (chekToken()) {
+    if (checkToken()) {
       dispatch(
         setUser({
           isAuth: true,
