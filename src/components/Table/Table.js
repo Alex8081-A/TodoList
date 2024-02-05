@@ -1,13 +1,10 @@
 import React from "react";
 import tableStyle from "./table.scss";
 const Table = (props) => {
-  console.log(props.config[0]);
   const columns = props.config[0].columns;
   const dataSource = props.config[0].dataSource;
 
   const rows = dataSource.map((item) => {
-    const keys = Object.keys(item);
-    console.log(keys);
     return (
       <tr key={item.id}>
         <td className="td">{item.name}</td>
@@ -16,11 +13,7 @@ const Table = (props) => {
     );
   });
   const column = columns.map((item) => {
-    return (
-      <th className="th" key={item.dataKey}>
-        {item.title}
-      </th>
-    );
+    return <th className="th">{item.title}</th>;
   });
   return (
     <div className="text">
